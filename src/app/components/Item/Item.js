@@ -21,8 +21,8 @@ export default function Item({item}) {
                     <span className='txt_info'>
                         {category?`${category}/`:""} {product_type}
                     </span>
-                    <Button style={{marginRight:"20px;"}} variant='contained' color='success'>구매하기</Button>
-                    <Button variant='contained' color='error'>취소하기</Button>
+                    <Button variant='contained' color='success'>구매하기</Button>
+                    {/* <Button variant='contained' color='error'>취소하기</Button> */}
                 </div>
             </div>
             <div className='disWrap'>
