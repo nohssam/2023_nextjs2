@@ -12,7 +12,7 @@ export default function Item({item}) {
     return(
         <>
             <div className='wrap'>
-                <div className='img_item'>
+                <div className='img_itemimg'>
                     <img src={image_link} alt={name} width={300} height={300} />
                 </div>
                 <div className='info_item'>

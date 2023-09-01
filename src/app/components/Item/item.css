@@ -3,7 +3,7 @@
     width: 80%;
     margin: 0 auto;
     padding: 40px 0;
-    border-bottom: 1pxsolid#ccc;
+    border-bottom: 1px solid #ccc;
   }
   .disWrap {
     width: 80%;
@@ -13,8 +13,10 @@
   .img_item {
     flex: 200px 0 0;
   }
+  
   .img_itemimg {
     display: block;
+    margin-right: 40px;
   }
   
   .info_item {
