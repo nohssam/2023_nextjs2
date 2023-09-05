@@ -22,27 +22,30 @@ export default function LoginPage() {
     };
 
     function login(){
-        //console.log(uvo.email+"/"+uvo.pwd);
         axios.post(
             API_URL, null,
             { params:{m_id:uvo.m_id, m_pw:uvo.m_pw}}
         ).then(json => {
-            if(json.data.chk === 0)
-                router.push("/");
-            else{
-                setCookie('u_name',json.data.mvo.m_name, { maxAge: 60 * 60 });// 3600은 1시간
-                //router.push("/");
-                location.href="/";
+            if(json.data.data.success){
+                alert(json.data.data.message);
+                // 쿠키에 사용자 정보를 저장하자
+                setCookie('u_name',json.data.data.data.m_name, {maxAge:60*60}); // 1시간 
+                // router를 사용하면 화면의 내용이 변하지 않는다.
+                // router.push("/");
+                location.href="/";
+            }else{
+                alert(json.data.data.message);   
+                return;           
             }
-        })
+        });
     };
     return(
     <div style={{width: '80%', margin: 'auto', paddingTop: '20px', textAlign: 'center'}}>
             <FormControl>
                 <Stack direction="column" spacing={1} alignItems='center'>
                     <Avatar sx={{ bgcolor: green[500], marginBottom:'20px'}} src="/broken-image.jpg"/>
-                    <TextField label='Email' name='아이디' fullWidth autoFocus onChange={changeUvo}/>
-                    <TextField type='password' label='패스워드' name='m_pw' fullWidth onChange={changeUvo}/>
+                    <TextField type='text' label='ID' name='m_id' fullWidth  onChange={changeUvo}/>
+                    <TextField type='password' label='PW' name='m_pw' fullWidth onChange={changeUvo}/>
                     <Button fullWidth variant='contained' onClick={login}>Sign in</Button>
                 </Stack>
             </FormControl>
